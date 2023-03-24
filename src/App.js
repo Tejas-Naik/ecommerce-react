@@ -1,11 +1,12 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Outlet } from "react-router-dom";
 import Home from "./routes/home/home.component";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<h1>Go to /home route</h1>} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} >
+        <Route path="shop" element={<h1>Hello from shop page</h1>} />
+      </Route>
     </Routes>
   )
 }
