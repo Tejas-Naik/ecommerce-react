@@ -3,7 +3,7 @@ import { createUserDocumentFromAuth, db, signInWithGooglePopUp } from "../../uti
 const SignIn = () => {
     const logGoogleUser = async () => {
         const response = await signInWithGooglePopUp();
-        createUserDocumentFromAuth(response.user);
+        const userDocRef = await createUserDocumentFromAuth(response.user);
     }
 
     return (
