@@ -29,7 +29,6 @@ const SignInForm = () => {
             ...formFields,
             [name]: value,
         })
-        console.log(formFields);
     }
 
     const resetFormFields = () => {
