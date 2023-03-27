@@ -19,8 +19,8 @@ const SignInForm = () => {
     const { setCurrentUser } = useContext(UserContext);
 
     const SignInWithGoogle = async () => {
-        const response = await signInWithGooglePopUp();
-        await createUserDocumentFromAuth(response.user);
+        const { user } = await signInWithGooglePopUp();
+        await createUserDocumentFromAuth(user);
     }
 
     const handleChange = (event) => {
@@ -39,8 +39,9 @@ const SignInForm = () => {
         event.preventDefault();
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            setCurrentUser(user);
             resetFormFields();
+            // Adding to Context
+            setCurrentUser(user);
         } catch (error) {
             switch (error.code) {
                 case 'auth/wrong-password':
