@@ -4,6 +4,10 @@ import { Link, Outlet } from "react-router-dom";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+
+import ShoppingCart from "../../components/cart-icon/cart-icon.conponent";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+
 import './navigation.styles.scss';
 
 const Navigation = () => {
@@ -26,7 +30,9 @@ const Navigation = () => {
 							<Link className="nav-link" to="/auth">SIGN IN</Link>
 						)
 					}
+					<Link className="nav-link" to="/shop"><ShoppingCart /></Link>
 				</div>
+				<CartDropdown />
 			</div>
 			<Outlet />
 		</Fragment>
