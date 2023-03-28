@@ -1,21 +1,14 @@
 import { useContext } from "react";
-import Button from "../../components/button/button.component";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { CartContext } from "../../contexts/cart.context";
 import './checkout.styles.scss';
 
 const Checkout = () => {
-    const { cartItems, addItemToCart, removeItemFromCart } = useContext(CartContext);
+    const { cartItems, cartTotal } = useContext(CartContext);
     console.log(cartItems);
-
-    const grandTotal = cartItems.reduce((total, item) => {
-        const itemTotal = item.price * item.quantity;
-        return total + itemTotal;
-    }, 0);
 
     return (
         <div className="checkout-container">
-            <h1>Checkout Page</h1>
             <div className="checkout-header">
                 <div className="header-block">
                     <span>Product</span>
@@ -37,7 +30,7 @@ const Checkout = () => {
                 <CheckoutItem key={cartItem.id} cartItem={cartItem} />
             ))
             }
-            <span className="total">Total: {grandTotal.toFixed(2)}</span>
+            <span className="total">Total: {cartTotal}</span>
         </div>
     )
 }
