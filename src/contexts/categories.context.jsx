@@ -3,12 +3,12 @@ import { getCategoriesAndDocuments } from "../utils/firebase/firebase.utils.js";
 
 import SHOP_DATA from "../shop-data.js";
 
-export const ProductsContext = createContext({
-    products: [],
+export const CategoriesContext = createContext({
+    categoryiesMap: {},
 });
 
-export const ProductsProvider = ({ children }) => {
-    const [products, setProducts] = useState([]);
+export const CategoriesProvider = ({ children }) => {
+    const [categoriesMap, setCategoriesMap] = useState({});
 
     // Run only once to add it to firebase
     // useEffect(() => {
@@ -18,16 +18,17 @@ export const ProductsProvider = ({ children }) => {
     // Getting the categories from the firebase
     useEffect(() => {
         const getCategories = async () => {
-            const categories = await getCategoriesAndDocuments();
-            console.log(categories);
+            const categoriesMap = await getCategoriesAndDocuments();
+            console.log(categoriesMap);
+            setCategoriesMap(categoriesMap);
         }
         getCategories();
     }, [])
 
-    const value = { products };
+    const value = { categoriesMap };
     return (
-        <ProductsContext.Provider value={value}>
+        <CategoriesContext.Provider value={value}>
             {children}
-        </ProductsContext.Provider>
+        </CategoriesContext.Provider>
     )
 }
