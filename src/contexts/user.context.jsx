@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useEffect, useReducer, } from "react";
 import { onAuthStateChangedListener } from "../utils/firebase/firebase.utils";
 
 // Actual value you wanna access
